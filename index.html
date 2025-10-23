@@ -1,62 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cafe Menu</title>
-    <link href="styles.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="menu">
-      <main>
-        <h1>CAMPER CAFE</h1>
-        <p class="established">Est. 2020</p>
-        <hr>
-        <section>
-          <h2>Coffee</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg" alt="coffee icon"/>
-          <article class="item">
-            <p class="flavor">French Vanilla</p><p class="price">3.00</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Caramel Macchiato</p><p class="price">3.75</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Pumpkin Spice</p><p class="price">3.50</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Hazelnut</p><p class="price">4.00</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Mocha</p><p class="price">4.50</p>
-          </article>
-        </section>
-        <section>
-          <h2>Desserts</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg" alt="pie icon"/>
-          <article class="item">
-            <p class="dessert">Donut</p><p class="price">1.50</p>
-          </article>
-          <article class="item">
-            <p class="dessert">Cherry Pie</p><p class="price">2.75</p>
-          </article>
-          <article class="item">
-            <p class="dessert">Cheesecake</p><p class="price">3.00</p>
-          </article>
-          <article class="item">
-            <p class="dessert">Cinnamon Roll</p><p class="price">2.50</p>
-          </article>
-        </section>
-      </main>
-      <hr class="bottom-line">
-      <footer>
-        <address>
-          <p>
-            <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
-          </p>
-          <p class="address">123 Free Code Camp Drive</p>
-        </address>
-      </footer>
-    </div>
-  </body>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year — 12A7 Phiêu Lưu Ký</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: radial-gradient(circle at center, #000015, #000);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      perspective: 1000px;
+      cursor: crosshair;
+    }
+
+    /* --- Marquee --- */
+    .marquee {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 8px #ffea00, 0 0 16px #ff004c;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+
+    /* --- Container --- */
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transform-style: preserve-3d;
+    }
+
+    /* --- Title --- */
+    .title {
+      font-size: 100px;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ffae00, #ffffff, #ff66cc);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 5s infinite linear, float3D 6s infinite ease-in-out;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transform-style: preserve-3d;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Hiệu ứng 3D tự chuyển động */
+    @keyframes float3D {
+      0% { transform: rotateY(0deg) rotateX(0deg) translateZ(0px); }
+      25% { transform: rotateY(10deg) rotateX(5deg) translateZ(30px); }
+      50% { transform: rotateY(0deg) rotateX(0deg) translateZ(0px); }
+      75% { transform: rotateY(-10deg) rotateX(-5deg) translateZ(30px); }
+      100% { transform: rotateY(0deg) rotateX(0deg) translateZ(0px); }
+    }
+
+    /* --- Subtitle --- */
+    .subtitle {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: 500;
+      text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* --- Stage Lights --- */
+    .stage-light {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,200,0.6), transparent 70%);
+      filter: blur(100px);
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: lightMove 4s infinite alternate ease-in-out;
+      z-index: 5;
+    }
+
+    .stage-light.left {
+      left: 10%;
+      top: 20%;
+      transform: rotate(-15deg);
+    }
+
+    .stage-light.right {
+      right: 10%;
+      top: 20%;
+      transform: rotate(15deg);
+      animation-delay: 2s;
+    }
+
+    @keyframes lightMove {
+      0% { opacity: 0.4; transform: scale(1) translateY(0); }
+      100% { opacity: 0.8; transform: scale(1.2) translateY(50px); }
+    }
+
+    /* --- Floating image --- */
+    .floating-img {
+      position: absolute;
+      width: 200px;
+      opacity: 0.6;
+      animation: floatImg 10s infinite linear;
+    }
+
+    @keyframes floatImg {
+      0% { transform: translate(0,0) rotate(0deg); }
+      25% { transform: translate(200px, -100px) rotate(15deg); }
+      50% { transform: translate(-150px, 100px) rotate(-10deg); }
+      75% { transform: translate(100px, 150px) rotate(5deg); }
+      100% { transform: translate(0,0) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Marquee -->
+  <div class="marquee"><span>— 12A7 Phiêu Lưu Ký — 12A7 Phiêu Lưu Ký — 12A7 Phiêu Lưu Ký —</span></div>
+
+  <!-- Stage Lights -->
+  <div class="stage-light left"></div>
+  <div class="stage-light right"></div>
+
+  <!-- Main Text -->
+  <div class="container" id="main">
+    <h1 class="title" id="title">HAPPY NEW YEAR</h1>
+    <p class="subtitle">Gửi đến những người đến được trang web này một lời chào năm mới,<br>chúc mọi người năm mới vui vẻ 🎉</p>
+  </div>
+
+  <!-- Floating Images -->
+  <img src="https://cdn.pixabay.com/photo/2016/12/31/17/31/fireworks-1948364_1280.png" class="floating-img" id="float1" style="top:20%; left:10%;">
+  <img src="https://cdn.pixabay.com/photo/2017/12/31/23/27/fireworks-3054692_1280.png" class="floating-img" id="float2" style="bottom:10%; right:15%; animation-delay:5s;">
+
+  <script>
+    const container = document.getElementById('main');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      container.style.transform = `translate(-50%, -50%) rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+
+    // Floating fireworks move randomly
+    const imgs = document.querySelectorAll('.floating-img');
+    setInterval(() => {
+      imgs.forEach(img => {
+        const x = Math.random() * window.innerWidth - 100;
+        const y = Math.random() * window.innerHeight - 100;
+        img.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
+      });
+    }, 7000);
+  </script>
+</body>
 </html>
